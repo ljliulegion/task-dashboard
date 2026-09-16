@@ -1,179 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
 @theme {
-  --color-primary-50: #f0f9ff;
-  --color-primary-100: #e0f2fe;
-  --color-primary-200: #bae6fd;
-  --color-primary-300: #7dd3fc;
-  --color-primary-400: #38bdf8;
-  --color-primary-500: #0ea5e9;
-  --color-primary-600: #0284c7;
-  --color-primary-700: #0369a1;
-  --color-primary-800: #075985;
-  --color-primary-900: #0c4a6e;
-  --color-primary-950: #082f49;
-
-  --color-secondary-50: #fdf4ff;
-  --color-secondary-100: #fae8ff;
-  --color-secondary-200: #f5d0fe;
-  --color-secondary-300: #f0abfc;
-  --color-secondary-400: #e879f9;
-  --color-secondary-500: #d946ef;
-  --color-secondary-600: #c026d3;
-  --color-secondary-700: #a21caf;
-  --color-secondary-800: #86198f;
-  --color-secondary-900: #701a75;
-  --color-secondary-950: #4a044e;
-
-  --color-neutral-50: #fafafa;
-  --color-neutral-100: #f4f4f5;
-  --color-neutral-200: #e4e4e7;
-  --color-neutral-300: #d4d4d8;
-  --color-neutral-400: #a1a1aa;
-  --color-neutral-500: #71717a;
-  --color-neutral-600: #52525b;
-  --color-neutral-700: #3f3f46;
-  --color-neutral-800: #27272a;
-  --color-neutral-900: #18181b;
-  --color-neutral-950: #09090b;
-
-  /* Added green color scale */
-  --color-green-50: #f0fdf4;
-  --color-green-100: #dcfce7;
-  --color-green-200: #bbf7d0;
-  --color-green-600: #16a34a;
-  --color-green-700: #15803d;
-
-  /* Added rose color scale */
-  --color-rose-50: #fff1f2;
-  --color-rose-100: #ffe4e6;
-  --color-rose-200: #fecdd3;
-  --color-rose-500: #f43f5e;
-  --color-rose-600: #e11d48;
-  --color-rose-700: #be123c;
-
-  /* Added blue color scale (for non-primary blue uses) */
-  --color-blue-100: #dbeafe;
-  --color-blue-200: #bfdbfe;
-  --color-blue-700: #1d4ed8;
-
-  --font-sans:
-    Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
-
-  --shadow-soft:
-    0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04);
+  --font-sans: 'Space Grotesk', sans-serif;
+  --font-mono: 'DM Mono', monospace;
 }
 
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
-@layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-neutral-200, currentcolor); /* Changed from gray-200 to neutral-200 */
-  }
-
-  /* Restore v3 placeholder color behavior */
-  input::placeholder,
-  textarea::placeholder {
-    color: var(--color-neutral-400, currentColor); /* Using neutral-400 from theme */
-  }
-
-  /* Restore v3 button cursor behavior */
-  button:not(:disabled),
-  [role="button"]:not(:disabled) {
-    cursor: pointer;
-  }
+:root {
+  color: #f3f1eb;
+  background: #101112;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
-body {
-  margin: 0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #f8fafc;
-  color: #334155;
-}
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; background: #101112; }
+button { font: inherit; }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.game-shell {
+  min-height: 100vh;
+  padding: clamp(24px, 5vw, 72px) clamp(18px, 5vw, 80px) 26px;
+  background: radial-gradient(circle at 67% 40%, #28302d 0, #151817 38%, #101112 75%);
 }
+.game-layout { width: min(1080px, 100%); margin: auto; display: grid; grid-template-columns: minmax(200px, 0.72fr) minmax(500px, 1.28fr); gap: clamp(32px, 7vw, 100px); align-items: center; }
+.game-intro { align-self: center; }
+.brand-mark { color: #e6b85d; font-size: 31px; line-height: 1; margin-bottom: 30px; }
+.eyebrow, .panel-label, .game-card-top, .game-footer, .stats span, .keyboard-hint, .board-footer { font-family: 'DM Mono', monospace; letter-spacing: .13em; text-transform: uppercase; }
+.eyebrow { color: #7f897f; font-size: 10px; margin: 0 0 16px; }
+h1 { font-size: clamp(52px, 7vw, 78px); line-height: .92; letter-spacing: -.075em; margin: 0; font-weight: 600; }
+h1 span { color: #e6b85d; }
+.intro-copy { color: #9ba199; font-size: 17px; line-height: 1.55; margin: 27px 0 42px; }
+.keyboard-hint { display: flex; align-items: center; gap: 8px; color: #626b64; font-size: 9px; flex-wrap: wrap; max-width: 210px; }
+.hint-key { border: 1px solid #464d47; color: #aeb7ae; padding: 4px 6px; border-radius: 3px; font-size: 11px; }
+.game-card { border: 1px solid #354039; border-radius: 8px; background: rgba(20, 24, 22, .92); box-shadow: 0 24px 80px #080a0960; padding: 19px; }
+.game-card-top { font-size: 9px; color: #768078; display: flex; justify-content: space-between; align-items: center; margin: 0 2px 17px; }
+.live-dot { display: inline-block; width: 6px; height: 6px; margin-right: 7px; background: #b9df89; border-radius: 50%; box-shadow: 0 0 10px #b9df89; }
+.top-actions { display: flex; gap: 7px; }
+.icon-button { border: 0; color: #68736b; background: transparent; width: 28px; height: 28px; padding: 5px; border-radius: 4px; }
+.icon-button:hover, .icon-button:focus-visible { color: #e6b85d; background: #2b332d; outline: none; }
+.icon-button svg, .pause-button svg { width: 17px; height: 17px; }
+.game-content { display: grid; grid-template-columns: minmax(270px, 1fr) 148px; gap: 17px; align-items: start; }
+.board-wrap { min-width: 0; }
+.board { position: relative; display: grid; grid-template-columns: repeat(10, 1fr); aspect-ratio: 1 / 2; background: #101412; border: 1px solid #303a33; border-radius: 3px; overflow: hidden; }
+.cell { min-width: 0; border-right: 1px solid #1a211d; border-bottom: 1px solid #1a211d; }
+.cell-cyan { background: #68c4bf; box-shadow: inset 2px 2px #abeee0, inset -2px -2px #3c807c; }
+.cell-yellow { background: #e4bb58; box-shadow: inset 2px 2px #ffe09a, inset -2px -2px #947837; }
+.cell-purple { background: #af8bd4; box-shadow: inset 2px 2px #dec8f7, inset -2px -2px #735793; }
+.cell-green { background: #8fbf85; box-shadow: inset 2px 2px #c3ebaf, inset -2px -2px #52774d; }
+.cell-red { background: #d27871; box-shadow: inset 2px 2px #f4a9a0, inset -2px -2px #884d4a; }
+.cell-blue { background: #7da3c8; box-shadow: inset 2px 2px #b6d8f2, inset -2px -2px #4d6b87; }
+.cell-orange { background: #d89562; box-shadow: inset 2px 2px #ffc694, inset -2px -2px #8e5c3b; }
+[class*="cell-ghost"] { background: transparent; box-shadow: inset 0 0 0 1px #6e7e7038; }
+.board-overlay { position: absolute; inset: 0; z-index: 2; background: #101512e8; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 9px; text-align: center; color: #89968a; }
+.board-overlay svg { width: 29px; color: #e6b85d; }
+.board-overlay strong { color: #f3f1eb; font-size: 23px; letter-spacing: .07em; }
+.board-overlay span { font: 10px 'DM Mono', monospace; letter-spacing: .05em; }
+.board-overlay .overlay-kicker { color: #e6b85d; font-size: 9px; text-transform: uppercase; letter-spacing: .16em; }
+.board-overlay button { margin-top: 8px; padding: 9px 18px; border: 1px solid #e6b85d; background: #e6b85d; color: #171a16; border-radius: 3px; font-size: 12px; font-weight: 600; }
+.board-footer { color: #616b63; font-size: 8px; display: flex; justify-content: space-between; padding: 10px 2px 0; }
+.board-footer small { color: #909990; font-size: 8px; text-transform: none; letter-spacing: 0; margin-left: 4px; }
+.game-sidebar { display: flex; flex-direction: column; gap: 18px; }
+.next-panel { background: #171d19; border: 1px solid #303a33; border-radius: 4px; padding: 14px; }
+.panel-label { display: block; color: #778177; font-size: 8px; margin-bottom: 15px; }
+.preview-grid { width: 94px; height: 75px; margin: auto; display: grid; grid-template-columns: repeat(4, 1fr); }
+.preview-cell { border: 1px solid transparent; }
+.stats { border-top: 1px solid #334038; border-bottom: 1px solid #334038; padding: 3px 0; }
+.stats div { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 2px; }
+.stats span { color: #69756c; font-size: 8px; }
+.stats strong { color: #e6b85d; font: 500 20px 'DM Mono', monospace; }
+.pause-button { border: 1px solid #465249; border-radius: 3px; color: #b8c0b6; background: #202720; height: 39px; display: flex; justify-content: center; align-items: center; gap: 8px; font-size: 12px; }
+.pause-button:hover:not(:disabled), .pause-button:focus-visible { border-color: #e6b85d; color: #e6b85d; outline: none; }
+.pause-button:disabled { opacity: .4; cursor: not-allowed; }
+.mobile-controls { display: none; }
+.game-footer { width: min(1080px, 100%); margin: 38px auto 0; color: #4d574e; font-size: 8px; display: flex; justify-content: space-between; }
 
-/* Custom animations */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.animate-fadeIn {
-  animation: fadeIn 0.3s ease-in-out forwards;
-}
-
-/* Custom utility classes */
-.glass-effect {
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-.task-transition {
-  transition: all 0.2s ease-in-out;
-}
-
-.task-transition:hover {
-  transform: translateY(-2px);
-}
-
-.checkbox-container {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.checkbox-container input[type="checkbox"] {
-  appearance: none;
-  height: 1.25rem; /* h-5 */
-  width: 1.25rem; /* w-5 */
-  border-radius: 0.375rem; /* rounded-md */
-  border: 1px solid var(--color-neutral-300); /* border-gray-300 (using neutral as per theme) */
-  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 200ms;
-}
-
-.checkbox-container input[type="checkbox"]:checked {
-  background-color: var(--color-primary-500);
-  border-color: transparent;
-}
-
-.checkbox-container input[type="checkbox"]:focus {
-  outline-style: hidden; /* focus:outline-hidden */
-}
-
-.checkbox-container .checkmark {
-  position: absolute;
-  left: 3px;
-  top: 5px;
-  opacity: 0;
-  transition-property: opacity;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  pointer-events: none;
-}
-
-.checkbox-container input[type="checkbox"]:checked ~ .checkmark {
-  opacity: 1;
+@media (max-width: 720px) {
+  .game-shell { padding: 25px 15px 20px; }
+  .game-layout { display: block; }
+  .game-intro { display: flex; align-items: baseline; gap: 11px; margin-bottom: 19px; }
+  .brand-mark, .intro-copy, .keyboard-hint { display: none; }
+  .eyebrow { margin: 0; font-size: 8px; }
+  h1 { font-size: 34px; line-height: 1; letter-spacing: -.06em; }
+  .game-card { padding: 12px; }
+  .game-content { grid-template-columns: minmax(0, 1fr) 112px; gap: 11px; }
+  .game-sidebar { gap: 12px; }
+  .next-panel { padding: 10px; }
+  .preview-grid { width: 76px; height: 60px; }
+  .stats div { padding: 8px 1px; }
+  .stats strong { font-size: 16px; }
+  .pause-button { height: 35px; font-size: 11px; }
+  .mobile-controls { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+  .mobile-controls button { background: #202720; border: 1px solid #465249; color: #d3d9d0; border-radius: 3px; height: 34px; font-size: 18px; }
+  .mobile-controls button:active { background: #e6b85d; color: #171a16; }
+  .game-footer { margin-top: 20px; font-size: 7px; }
 }
